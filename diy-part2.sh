@@ -15,6 +15,12 @@ svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt /p
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
+# Modify golang ver
+sed -i '13,14d' package/feeds/packages/lang/golang/golang-version.mk
+sed -i '$a GO_VERSION_MAJOR_MINOR:=1.17' package/feeds/packages/lang/golang/golang-version.mk
+sed -i '$a GO_VERSION_PATCH:=3' package/feeds/packages/lang/golang/golang-version.mk
+sed -i '21d' package/feeds/packages/lang/golang/golang/Makefile
+sed -i 'N,21iPKG_HASH:=705c64251e5b25d5d55ede1039c6aa22bea40a7a931d14c370339853643c3df0' package/feeds/packages/lang/golang/golang/Makefile
 # 703n
 
 sed -i 's/define Device\/tl-wr710n-v1/define Device\/tl-wr703n-v1/g' target/linux/ar71xx/image/generic-tp-link.mk
