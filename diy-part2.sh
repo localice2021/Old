@@ -11,7 +11,7 @@
 # Add sources
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd /package
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt /package
-
+svn co https://github.com/kuoruan/openwrt-upx/trunk/upx /tools
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
