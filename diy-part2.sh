@@ -9,9 +9,9 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 # Add sources
-svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd /package
-svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt /package
-svn co https://github.com/kuoruan/openwrt-upx/trunk/upx /tools
+svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd package/luci-app-vsftpd
+svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt package/vsftpd-alt
+svn co https://github.com/kuoruan/openwrt-upx/trunk/upx tools/upx
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
