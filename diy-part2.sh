@@ -11,11 +11,12 @@
 # Add sources
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd package/luci-app-vsftpd
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt package/vsftpd-alt
-rm -rf tools
-svn co https://github.com/coolsnowwolf/lede/trunk/tools tools
+svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
-
+# Add upx
+sed -i 's/squashfskit4 sstrip/squashfskit4 sstrip upx/g' tools/Makefile
+sed -i '45 i $(curdir)/upx/compile := $(curdir)/ucl/compile' tools/Makefile
 # Modify golang ver
 sed -i '13,14d' feeds/packages/lang/golang/golang-version.mk
 sed -i '$a GO_VERSION_MAJOR_MINOR:=1.17' feeds/packages/lang/golang/golang-version.mk
