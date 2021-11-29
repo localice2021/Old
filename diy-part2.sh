@@ -16,7 +16,7 @@ svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 # Add upx
-sed -i 's/squashfskit4 sstrip/squashfskit4 sstrip ucl upx/g' tools/Makefile
+sed -i '30 i tools-y += ucl upx' tools/Makefile
 sed -i '45 i $(curdir)/upx/compile := $(curdir)/ucl/compile' tools/Makefile
 # Modify golang ver
 sed -i '13,14d' feeds/packages/lang/golang/golang-version.mk
