@@ -11,7 +11,7 @@
 # Add sources
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd package/luci-app-vsftpd
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt package/vsftpd-alt
-svn co https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-baidupcs-web package/luci-app-baidupcs-web
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-baidupcs-web package/luci-app-baidupcs-web
 svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/ucl tools/ucl
 svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 # Modify default IP
