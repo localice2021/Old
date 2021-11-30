@@ -17,6 +17,8 @@ svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 # Modify wireless
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
+sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
 # Add upx
 sed -i '30 i tools-y += ucl upx' tools/Makefile
 sed -i '45 i $(curdir)/upx/compile := $(curdir)/ucl/compile' tools/Makefile
