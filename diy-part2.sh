@@ -16,7 +16,7 @@
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
-sed -i 's/\'OpenWrt\'/\'Wr03\'/g' package/base-files/files/bin/config_generate
+sed -i "s/'OpenWrt'/'Wr03'/g" package/base-files/files/bin/config_generate
 #Modify ssid
 sed -i 's/OpenWrt/Dir05/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # Modify wireless
