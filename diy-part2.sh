@@ -16,9 +16,9 @@ svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/ucl tools/ucl
 svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
-sed -i 's/\'OpenWrt\'/\'Phicomm\'/g' package/base-files/files/bin/config_generate
+sed -i 's/\'OpenWrt\'/\'Wr03\'/g' package/base-files/files/bin/config_generate
 #Modify ssid
-sed -i 's/OpenWrt/Phicomm/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/OpenWrt/Wr03/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
 # sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
