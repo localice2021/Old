@@ -1,43 +1,59 @@
 #!/bin/bash
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# File name: diy-part2.sh
-# Description: OpenWrt DIY script part 2 (After Update feeds)
-# Add sources
-# svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd package/luci-app-vsftpd
-# svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt package/vsftpd-alt
-# svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-baidupcs-web package/luci-app-baidupcs-web
-# svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/ucl tools/ucl
-# svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
-sed -i "s/'OpenWrt'/'Dir05'/g" package/base-files/files/bin/config_generate
-#Modify ssid
-sed -i 's/OpenWrt/Dir05/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-# Modify wireless
-# sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-# Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
-# sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
-# Add upx
-# sed -i '30 i tools-y += ucl upx' tools/Makefile
-# sed -i '45 i $(curdir)/upx/compile := $(curdir)/ucl/compile' tools/Makefile
-# Modify golang ver
-# sed -i '13,14d' feeds/packages/lang/golang/golang-version.mk
-# sed -i '$a GO_VERSION_MAJOR_MINOR:=1.17' feeds/packages/lang/golang/golang-version.mk
-# sed -i '$a GO_VERSION_PATCH:=3' feeds/packages/lang/golang/golang-version.mk
-# sed -i '21d' feeds/packages/lang/golang/golang/Makefile
-# sed -i '21 i PKG_HASH:=705c64251e5b25d5d55ede1039c6aa22bea40a7a931d14c370339853643c3df0' feeds/packages/lang/golang/golang/Makefile
-# 703n
+#========================================================================================================================
+# https://github.com/ophub/amlogic-s9xxx-openwrt
+# Description: Automatically Build OpenWrt for Amlogic S9xxx STB
+# Function: Diy script (After Update feeds, Modify the default IP, hostname, theme, add/remove software packages, etc.)
+# Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
+#========================================================================================================================
 
-# sed -i 's/define Device\/tl-wr710n-v1/define Device\/tl-wr703n-v1/g' target/linux/ar71xx/image/generic-tp-link.mk
-# sed -i 's/$(Device\/tplink-8mlzma)/$(Device\/tplink-16mlzma)/g' target/linux/ar71xx/image/generic-tp-link.mk
-# sed -i 's/DEVICE_TITLE := TP-LINK TL-WR710N v1/DEVICE_TITLE := TP-LINK TL-WR703N v1/g' target/linux/ar71xx/image/generic-tp-link.mk
-# sed -i 's/BOARDNAME := TL-WR710N/BOARDNAME := TL-WR703N/g' target/linux/ar71xx/image/generic-tp-link.mk
-# sed -i 's/DEVICE_PROFILE := TLWR710/DEVICE_PROFILE := TLWR703/g' target/linux/ar71xx/image/generic-tp-link.mk
-# sed -i 's/TPLINK_HWID := 0x07100001/TPLINK_HWID := 0x07030101/g' target/linux/ar71xx/image/generic-tp-link.mk
-# sed -i 's/TARGET_DEVICES += tl-wr710n-v1/TARGET_DEVICES += tl-wr703n-v1/g' target/linux/ar71xx/image/generic-tp-link.mk
+# ------------------------------- Main source started -------------------------------
+#
+# Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
+sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
+
+# Add autocore support for armvirt
+# sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
+
+# Set etc/openwrt_release
+# sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
+# echo "DISTRIB_SOURCECODE='lede'" >>package/base-files/files/etc/openwrt_release
+
+# Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
+sed -i 's/192.168.1.1/192.168.19.1/g' package/base-files/files/bin/config_generate
+sed -i "s/'OpenWrt'/'Phicomm'/g" package/base-files/files/bin/config_generate
+
+#Modify ssid
+sed -i 's/OpenWrt/Phicomm/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# Modify default root's password（FROM 'password'[$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.] CHANGE TO 'your password'）
+# sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+
+# Replace the default software source
+# sed -i 's#openwrt.proxy.ustclug.org#mirrors.bfsu.edu.cn\\/openwrt#' package/lean/default-settings/files/zzz-default-settings
+#
+# ------------------------------- Main source ends -------------------------------
+
+# ------------------------------- Other started -------------------------------
+#
+# Add luci-app-amlogic
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+
+# svn co https://github.com/vernesong/OpenClash.git/trunk/luci-app-openclash package/luci-app-openclash
+
+# Add p7zip
+svn co https://github.com/hubutui/p7zip-lede/trunk package/p7zip
+
+# coolsnowwolf default software package replaced with Lienol related software package
+# rm -rf feeds/packages/utils/{containerd,libnetwork,runc,tini}
+# svn co https://github.com/Lienol/openwrt-packages/trunk/utils/{containerd,libnetwork,runc,tini} feeds/packages/utils
+
+# Add third-party software packages (The entire repository)
+# git clone https://github.com/libremesh/lime-packages.git package/lime-packages
+# Add third-party software packages (Specify the package)
+# svn co https://github.com/libremesh/lime-packages/trunk/packages/{shared-state-pirania,pirania-app,pirania} package/lime-packages/packages
+# Add to compile options (Add related dependencies according to the requirements of the third-party software package Makefile)
+# sed -i "/DEFAULT_PACKAGES/ s/$/ pirania-app pirania ip6tables-mod-nat ipset shared-state-pirania uhttpd-mod-lua/" target/linux/armvirt/Makefile
+
+# Apply patch
+# git apply ../router-config/patches/{0001*,0002*}.patch --directory=feeds/luci
+#
+# ------------------------------- Other ends -------------------------------
