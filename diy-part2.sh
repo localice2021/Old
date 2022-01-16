@@ -9,7 +9,7 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 # Add sources
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
+# svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-vsftpd package/luci-app-vsftpd
 svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/vsftpd-alt package/vsftpd-alt
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-baidupcs-web package/luci-app-baidupcs-web
