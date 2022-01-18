@@ -118,7 +118,7 @@ jobs:
       env:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
         PACKAGE_SOC: s905d_s905x3_s922x_vplus_beikeyun_l1pro
-        KERNEL_VERSION_NAME: 5.14.83_5.4.163
+        KERNEL_VERSION_NAME: 5.10.83_5.4.163
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
