@@ -114,7 +114,7 @@ jobs:
       run: df -hT
 
     - name: Package Armvirt as OpenWrt
-      uses: unifreq/openwrt_packit@master
+      uses: localice2021/openwrt_packit@master
       env:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
         PACKAGE_SOC: s905d
