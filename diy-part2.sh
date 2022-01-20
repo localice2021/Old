@@ -14,6 +14,8 @@
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-baidupcs-web package/luci-app-baidupcs-web
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/ucl tools/ucl
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-vlmcsd package/luci/luci-app-vlmcsd
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/vlmcsd package/vlmcsd
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 sed -i "s/'OpenWrt'/'Dir05'/g" package/base-files/files/bin/config_generate
