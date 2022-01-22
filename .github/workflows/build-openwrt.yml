@@ -141,7 +141,7 @@ jobs:
     #  env:
     #    OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
     #    PACKAGE_SOC: s905d
-    #    KERNEL_VERSION_NAME: 5.10.90_5.4.170_5.15.13
+    #    KERNEL_VERSION_NAME: 5.4.170_5.15.13
     #    KERNEL_AUTO_LATEST: false
 
     - name: Package Armvirt as OpenWrt
@@ -149,7 +149,7 @@ jobs:
       with:
         armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
         amlogic_openwrt: s905d
-        amlogic_kernel: 5.15.13_5.4.170_5.10.90
+        amlogic_kernel: 5.15.13_5.4.170
 
     - name: Upload firmware to cowtransfer
       id: cowtransfer
