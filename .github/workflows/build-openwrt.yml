@@ -128,10 +128,10 @@ jobs:
     #    amlogic_openwrt: s905d
     #    amlogic_kernel: 5.15.13_5.4.170
 
-    - name: Upload artifact to Actions
-      uses: kittaakos/upload-artifact-as-is@master
-      with:
-        path: ${{ env.PACKAGED_OUTPUTPATH }}/
+    #- name: Upload artifact to Actions
+    #  uses: kittaakos/upload-artifact-as-is@master
+    #  with:
+    #    path: ${{ env.PACKAGED_OUTPUTPATH }}/
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
@@ -187,13 +187,12 @@ jobs:
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@v1
       with:
-        tag: openwrt_s9xxx
+        tag: openwrt_armvirt_v8_${{ env.PACKAGED_OUTPUTDATE }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-          This is OpenWrt firmware for Amlogic s9xxx tv box.
-          More information ...
+          This is OpenWrt firmware for Armvirt 64
 
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
