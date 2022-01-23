@@ -18,7 +18,7 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 #Add source
-sed -i '$a src-git bcm63xx https://github.com/pgid69/bcm63xx-phone' feeds.conf.default
+git clone https://github.com/pgid69/bcm63xx-phone package/bcm63xx-phone
 # git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 # git clone https://github.com/kenzok8/small.git package/small
 # sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
