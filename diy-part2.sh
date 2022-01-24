@@ -22,7 +22,7 @@ sed -i "s/'OpenWrt'/'Vodafone'/g" package/base-files/files/bin/config_generate
 #Modify ssid
 sed -i 's/OpenWrt/Vodafone/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #Delete 4.14
-sed -i '/4.14/d' include/kernel-version.mk
+# sed -i '/4.14/d' include/kernel-version.mk
 # Modify wireless
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
