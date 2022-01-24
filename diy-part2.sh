@@ -16,6 +16,8 @@
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 # patch
 sed -i 's/CONFIG_SPI_BCM63XX=y/CONFIG_SPI_BCM63XX=m/g' target/linux/brcm63xx/config-4.14
+git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/000-disable-spi-bcm63xx-module.patch
+git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/001-add-fn-to-spi-bcm63xx-for-quick-transfer.patch     
 # Modify default IP
 # sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 sed -i "s/'OpenWrt'/'Vodafone'/g" package/base-files/files/bin/config_generate
