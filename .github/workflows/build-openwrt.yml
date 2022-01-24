@@ -83,8 +83,6 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
-        git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/000-disable-spi-bcm63xx-module.patch
-        git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/001-add-fn-to-spi-bcm63xx-for-quick-transfer.patch
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH connection to Actions
