@@ -14,6 +14,8 @@
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/package/lean/luci-app-baidupcs-web package/luci-app-baidupcs-web
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/ucl tools/ucl
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
+# patch
+sed -i 's/CONFIG_SPI_BCM63XX=y/CONFIG_SPI_BCM63XX=m/g' target/linux/brcm63xx/config-4.14
 # Modify default IP
 # sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 sed -i "s/'OpenWrt'/'Vodafone'/g" package/base-files/files/bin/config_generate
