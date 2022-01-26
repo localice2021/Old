@@ -61,7 +61,7 @@ jobs:
         #git clone $REPO_URL openwrt
         git clone https://git.openwrt.org/openwrt/openwrt.git
         cd openwrt
-        git checkout v18.06.4
+        git checkout v18.06.5
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
