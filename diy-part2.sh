@@ -17,7 +17,7 @@
 # patch 15.05
 git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/000-disable-spi-bcm63xx-module.patch
 git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/001-modify-hostname.patch
-git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/git-version-check-fix.patch
+# git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/git-version-check-fix.patch
 # patch
 # sed -i 's/CONFIG_SPI_BCM63XX=y/CONFIG_SPI_BCM63XX=m/g' target/linux/brcm63xx/config-4.14
 # git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/000-disable-spi-bcm63xx-module.patch
