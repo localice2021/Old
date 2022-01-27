@@ -35,7 +35,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Checkout
@@ -59,10 +59,9 @@ jobs:
       run: |
         df -hT $PWD
         #git clone $REPO_URL openwrt
-        #git clone https://git.openwrt.org/openwrt/openwrt.git
-        git clone https://github.com/openwrt/chaos_calmer.git openwrt
+        git clone https://git.openwrt.org/openwrt/openwrt.git
         cd openwrt
-        # git checkout v18.06.5
+        git checkout v17.01.3
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
