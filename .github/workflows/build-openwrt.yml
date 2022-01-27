@@ -20,8 +20,8 @@ on:
         default: 'false'
 
 env:
-  #REPO_URL: https://github.com/openwrt/openwrt
-  #REPO_BRANCH: openwrt-18.06
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-18.06
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
@@ -35,7 +35,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -58,10 +58,10 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        #git clone $REPO_URL openwrt
-        git clone https://git.openwrt.org/openwrt/openwrt.git
+        git clone $REPO_URL openwrt
+        #git clone https://git.openwrt.org/openwrt/openwrt.git
         cd openwrt
-        git checkout v17.01.4
+        #git checkout v17.01.4
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
