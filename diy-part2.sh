@@ -15,23 +15,23 @@
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/ucl tools/ucl
 # svn co https://github.com/coolsnowwolf/lede.git/trunk/tools/upx tools/upx
 # patch 15.05
-git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/000-disable-spi-bcm63xx-module.patch
-git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/001-modify-hostname.patch
+#git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/000-disable-spi-bcm63xx-module.patch
+#git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/001-modify-hostname.patch
 # git apply package/bcm63xx-phone/bcm63xx-phone/patches/15.05/git-version-check-fix.patch
 # patch
-# sed -i 's/CONFIG_SPI_BCM63XX=y/CONFIG_SPI_BCM63XX=m/g' target/linux/brcm63xx/config-4.14
-# git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/000-disable-spi-bcm63xx-module.patch
-# git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/001-add-fn-to-spi-bcm63xx-for-quick-transfer.patch     
-# cp target/linux/brcm63xx/patches-4.9/900-add_fn_to_spi_bcm63xx_for_quick_transfer.patch target/linux/brcm63xx/patches-4.14/
+sed -i 's/CONFIG_SPI_BCM63XX=y/CONFIG_SPI_BCM63XX=m/g' target/linux/brcm63xx/config-4.14
+git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/000-disable-spi-bcm63xx-module.patch
+git apply package/bcm63xx-phone/bcm63xx-phone/patches/18.06/001-add-fn-to-spi-bcm63xx-for-quick-transfer.patch     
+cp target/linux/brcm63xx/patches-4.9/900-add_fn_to_spi_bcm63xx_for_quick_transfer.patch target/linux/brcm63xx/patches-4.14/
 # Modify default IP
 # sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
-# sed -i "s/'OpenWrt'/'Vodafone'/g" package/base-files/files/bin/config_generate
+sed -i "s/'OpenWrt'/'Vodafone'/g" package/base-files/files/bin/config_generate
 #Modify ssid
-# sed -i 's/OpenWrt/Vodafone/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/OpenWrt/Vodafone/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #Delete 4.14
 # sed -i '/4.14/d' include/kernel-version.mk
 # Modify wireless
-# sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
 # sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
 # Add upx
