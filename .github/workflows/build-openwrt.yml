@@ -137,7 +137,7 @@ jobs:
         path: ${{ env.FIRMWARE }}
     
     - name: Package Armvirt as OpenWrt
-      uses: ophub/amlogic-s9xxx-openwrt@main
+      uses: localice2021/amlogic-s9xxx-openwrt@main
       with:
         armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
         amlogic_openwrt: s905d
